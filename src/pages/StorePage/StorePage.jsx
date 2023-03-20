@@ -1,5 +1,7 @@
+import { Typography } from '@mui/material'
+
 const StorePage = () => {
-	return <h1>Record Store</h1>
+	return <Typography variant='h1'>Record Store</Typography>
 }
 
 export default StorePage
