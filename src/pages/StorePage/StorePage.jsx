@@ -1,7 +1,11 @@
-import { Typography } from '@mui/material'
+import TitleBar from '../../components/TitleBar'
 
 const StorePage = () => {
-	return <Typography variant='h1'>Record Store</Typography>
+	return (
+		<>
+			<TitleBar />
+		</>
+	)
 }
 
 export default StorePage
