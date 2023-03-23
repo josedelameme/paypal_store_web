@@ -1,13 +1,15 @@
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const PayPalCheckout = ({
+	total = 0,
 	handleCreateOrder = () => {},
 	handleApprove = () => {},
 }) => {
 	return (
 		<>
 			<PayPalButtons
+				forceReRender={[total]}
 				createOrder={handleCreateOrder}
 				onApprove={handleApprove}
 			/>
@@ -41,13 +43,12 @@ export default ({
 
 	const handleApprove = (data, actions) => {
 		return actions.order.capture().then((details) => {
-			console.log(details)
 			setIsPurchaseOpen(true)
 			setIsCheckoutOpen(false)
 		})
 	}
 
-	const props = { handleCreateOrder, handleApprove }
+	const props = { handleCreateOrder, handleApprove, total }
 
 	return (
 		<PayPalScriptProvider
