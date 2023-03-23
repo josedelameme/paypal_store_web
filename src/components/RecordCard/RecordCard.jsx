@@ -39,7 +39,7 @@ const RecordCard = ({
 					<Button
 						variant='contained'
 						onClick={() => {
-							handleBuy(price, title, sku)
+							handleBuy(sku)
 						}}
 						sx={{ width: 100 }}
 					>

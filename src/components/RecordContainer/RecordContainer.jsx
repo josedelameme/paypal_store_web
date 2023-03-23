@@ -5,11 +5,11 @@ import { recordList } from './RecordContainer.constants'
 
 const RecordContainer = ({
 	setIsCheckoutOpen = () => {},
-	setProductDetails = () => {},
+	setCurrentSku = () => {},
 }) => {
-	const handleBuy = (price, title, sku) => {
+	const handleBuy = (sku) => {
 		setIsCheckoutOpen(true)
-		setProductDetails({ price, title, sku })
+		setCurrentSku(sku)
 	}
 
 	return (
