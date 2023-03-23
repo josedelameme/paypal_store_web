@@ -15,9 +15,12 @@ const PayPalCheckout = ({
 	)
 }
 
-export default () => {
-	const [orderId, setOrderId] = useState()
-
+export default ({
+	setOrderId = '',
+	total = 0,
+	setIsPurchaseOpen = () => {},
+	setIsCheckoutOpen = () => {},
+}) => {
 	const handleCreateOrder = (data, actions) => {
 		return actions.order
 			.create({
@@ -25,7 +28,7 @@ export default () => {
 					{
 						amount: {
 							currency_code: 'USD',
-							value: '2',
+							value: total,
 						},
 					},
 				],
@@ -39,6 +42,8 @@ export default () => {
 	const handleApprove = (data, actions) => {
 		return actions.order.capture().then((details) => {
 			console.log(details)
+			setIsPurchaseOpen(true)
+			setIsCheckoutOpen(false)
 		})
 	}
 
