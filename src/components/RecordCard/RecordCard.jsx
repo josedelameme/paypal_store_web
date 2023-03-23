@@ -2,28 +2,49 @@ import {
 	Box,
 	Button,
 	Card,
-	ImageListItem,
 	Typography,
 	CardMedia,
 	CardContent,
+	Stack,
 } from '@mui/material'
-import { useEffect, useState } from 'react'
-import elMalQuerer from '../../assets/el_mal_querer.jpg'
 
 const RecordCard = ({
 	img = '',
 	title = '',
 	artist = '',
+	price = 0.0,
+	description = '',
+	sku = '',
 	handleBuy = () => {},
 }) => {
 	return (
 		<Card sx={{ display: 'flex' }}>
 			<CardMedia sx={{ width: 200, height: 200 }} image={img} />
 			<Box sx={{ display: 'flex', flexDirection: 'column' }}>
-				<CardContent sx={{ flex: '1 0 auto' }}>
-					<Typography variant='h6'>{title}</Typography>
-					<Typography variant='h6'>{artist}</Typography>
-					<Button onClick={handleBuy}>Buy</Button>
+				<CardContent sx={{ display: 'flex', flexDirection: 'row' }}>
+					<Stack>
+						<Typography
+							variant='h6'
+							sx={{ width: 500, height: 40 }}
+						>{`${title} - ${artist}`}</Typography>
+						<Typography variant='h8' sx={{ width: 500, height: 90 }}>
+							{description}
+						</Typography>
+						<Typography
+							variant='h5'
+							sx={{ width: 500, height: 20 }}
+						>{`$${price}`}</Typography>
+					</Stack>
+					<Box sx={{ width: 10 }} />
+					<Button
+						variant='contained'
+						onClick={() => {
+							handleBuy(sku)
+						}}
+						sx={{ width: 100 }}
+					>
+						Buy
+					</Button>
 				</CardContent>
 			</Box>
 		</Card>
