@@ -4,11 +4,13 @@ import OrderDetails from '../OrderDetails'
 import PayPalCheckout from '../PayPalCheckout'
 
 const CheckoutContainer = ({
+	total = 0,
+	setTotal = () => {},
+	setOrderId = () => {},
+	setIsPurchaseOpen = () => {},
 	setIsCheckoutOpen = () => {},
 	currentSku = '',
 }) => {
-	const [total, setTotal] = useState(0)
-
 	const handleCancel = () => {
 		setIsCheckoutOpen(false)
 	}
@@ -33,7 +35,12 @@ const CheckoutContainer = ({
 			<Box sx={{ height: 70 }} />
 			<OrderDetails currentSku={currentSku} total={total} setTotal={setTotal} />
 			<Box sx={{ height: 70 }} />
-			<PayPalCheckout />
+			<PayPalCheckout
+				total={total}
+				setOrderId={setOrderId}
+				setIsPurchaseOpen={setIsPurchaseOpen}
+				setIsCheckoutOpen={setIsCheckoutOpen}
+			/>
 			<Box sx={{ height: 30 }} />
 			<Button variant='contained' onClick={handleCancel}>
 				Cancel
