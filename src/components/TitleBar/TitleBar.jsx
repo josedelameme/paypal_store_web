@@ -4,7 +4,10 @@ import { ReactComponent as Turntable } from '../../assets/turntable.svg'
 const TitleBar = () => {
 	return (
 		<>
-			<AppBar>
+			<AppBar
+				position='fixed'
+				sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+			>
 				<Stack
 					spacing={4}
 					direction='row'
