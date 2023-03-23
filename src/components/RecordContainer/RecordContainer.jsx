@@ -4,24 +4,22 @@ import RecordCard from '../RecordCard/RecordCard'
 import { recordList } from './RecordContainer.constants'
 
 const RecordContainer = ({
-	isCheckoutOpen = false,
 	setIsCheckoutOpen = () => {},
+	setProductDetails = () => {},
 }) => {
-	const [width, setWidth] = useState('100%')
-
-	useEffect(() => {
-		isCheckoutOpen ? setWidth('70%') : setWidth('100%')
-	}, [isCheckoutOpen])
-
-	const handleBuy = () => {
-		setIsCheckoutOpen(!isCheckoutOpen)
+	const handleBuy = (price, title, sku) => {
+		setIsCheckoutOpen(true)
+		setProductDetails({ price, title, sku })
 	}
 
 	return (
 		<Stack
 			direction='column'
 			spacing={1}
-			sx={{ width: width, border: '1px solid grey' }}
+			sx={{
+				width: '60%',
+				border: '1px solid grey',
+			}}
 		>
 			{recordList.map((record) => (
 				<RecordCard
@@ -29,6 +27,9 @@ const RecordContainer = ({
 					img={record.img}
 					artist={record.artist}
 					title={record.title}
+					price={record.price}
+					sku={record.sku}
+					description={record.description}
 					handleBuy={handleBuy}
 				/>
 			))}

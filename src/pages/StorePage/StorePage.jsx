@@ -1,11 +1,12 @@
 import { Container, Stack } from '@mui/material'
 import TitleBar from '../../components/TitleBar'
 import CheckoutCard from '../../components/CheckoutCard'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import RecordContainer from '../../components/RecordContainer'
 
 const StorePage = () => {
 	const [isCheckoutOpen, setIsCheckoutOpen] = useState(false)
+	const [productDetails, setProductDetails] = useState({})
 
 	return (
 		<>
@@ -14,9 +15,13 @@ const StorePage = () => {
 				<RecordContainer
 					isCheckoutOpen={isCheckoutOpen}
 					setIsCheckoutOpen={setIsCheckoutOpen}
+					setProductDetails={setProductDetails}
 				/>
 				{isCheckoutOpen && (
-					<CheckoutCard setIsCheckoutOpen={setIsCheckoutOpen} />
+					<CheckoutCard
+						setIsCheckoutOpen={setIsCheckoutOpen}
+						productDetails={productDetails}
+					/>
 				)}
 			</Stack>
 		</>

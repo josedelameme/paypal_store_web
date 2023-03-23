@@ -9,8 +9,7 @@ const CheckoutCard = ({ setIsCheckoutOpen = () => {} }) => {
 	return (
 		<Box
 			sx={{
-				height: '90vh',
-				width: '30%',
+				width: '40%',
 				border: '1px solid grey',
 				textAlign: 'center',
 			}}
